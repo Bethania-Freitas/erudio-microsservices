@@ -10,7 +10,7 @@ namespace GeekShopping.ProductAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connection = builder.Configuration["MySQlConnection: MySLConnectionString"];
+            var connection = builder.Configuration["MySQlConnection: MySQLConnectionString"];
 
             builder.Services.AddDbContext<MySQLContext>(options => options.
                 UseMySql(connection, new MySqlServerVersion(new Version(6,0,0))));
