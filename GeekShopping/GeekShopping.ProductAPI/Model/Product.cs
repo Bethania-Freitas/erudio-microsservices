@@ -1,6 +1,32 @@
-﻿namespace GeekShopping.ProductAPI.Model
+﻿using GeekShopping.ProductAPI.Model.Base;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GeekShopping.ProductAPI.Model
 {
-    public class Product
+    [Table("product")]
+    public class Product : BaseEntity
     {
+        [Column("name")]
+        [Required]
+        [StringLength(150)]
+        public String Name { get; set; }
+
+        [Column("price")]
+        [Required]
+        [Range(1, 10000)]
+        public string Price { get; set; }
+
+        [Column ("description")]
+        [StringLength(500)]
+        public String Description { get; set; }
+
+        [Column("category_name")]
+        [StringLength (50)]
+        public String CategoryName { get; set; }
+
+        [Column("image_url")]
+        [StringLength(300)]
+        public String ImageURL { get; set; }
     }
 }
