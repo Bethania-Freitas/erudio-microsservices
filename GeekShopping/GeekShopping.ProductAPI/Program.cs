@@ -13,12 +13,15 @@ namespace GeekShopping.ProductAPI
             var connection = builder.Configuration["MySqlConnection:MySqlConnectionString"];
 
             builder.Services.AddDbContext<MySQLContext>(options => options.
-                UseMySql(connection, new MySqlServerVersion(new Version(6,0,0))));
+                UseMySql(connection, new MySqlServerVersion(new Version(7,0,0))));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "GeekShopping.ProductAPI", Version = "v1" });
+            });
 
             var app = builder.Build();
 
