@@ -5,8 +5,8 @@ Domine microservices, construa um e-commerce com ASP.NET .NET 'Core' 6 Oauth2 Op
 ##  Conteúdo
 
 O que são microsserviços e por que são cada vez mais populares
-O que é e como Implementar Oauth2, OpenID, JWT e Identity Server
-Como usar o framework Duende para construir um Identity Server
+<br> O que é e como Implementar Oauth2, OpenID, JWT e Identity Server
+<br> Como usar o framework Duende para construir um Identity Server
 Como trabalhar com Postman
 Desenvolver microsserviços com .NET 6
 Publicação e Consumo de Mensagens com RabbitMQ
