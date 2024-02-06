@@ -2,6 +2,8 @@
 
 Domine microservices, construa um e-commerce com ASP.NET .NET 'Core' 6 Oauth2 OpenID Identity Server RabbitMQ Ocelot e++
 
+https://www.udemy.com/course/microservices-do-0-a-gcp-com-dot-net-6-kubernetes-e-docker/
+
 ##  Conteúdo
 
 O que são microsserviços e por que são cada vez mais populares
