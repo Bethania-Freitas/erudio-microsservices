@@ -1,9 +1,12 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace GeekShopping.ProductAPI.Utils
 {
     public static class HttpClientExtensions
     {
+        private static MediaTypeHeaderValue contentType
+            = new MediaTypeHeaderValue("application/"); 
         public static async Task<T> HeadContentAs<T>(this HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
@@ -13,6 +16,21 @@ namespace GeekShopping.ProductAPI.Utils
             return JsonSerializer.Deserialize<T>(
                 dataAsString,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public static Task<HttpResponseMessage> PostAsJson<T>(this HttpClient httpClient, string url, T data)
+        {
+            var dataAsSting = JsonSerializer.Serialize(data);
+            var content = new StringContent(dataAsSting);
+            content.Headers.ContentType = contentType;
+            return httpClient.PostAsync(url, content);
+        }
+        public static Task<HttpResponseMessage> PutAsJson<T>(this HttpClient httpClient, string url, T data)
+        {
+            var dataAsSting = JsonSerializer.Serialize(data);
+            var content = new StringContent(dataAsSting);
+            content.Headers.ContentType = contentType;
+            return httpClient.PutAsync(url, content);
         }
     }
 }
