@@ -7,7 +7,7 @@ namespace GeekShopping.ProductAPI.Utils
     {
         private static MediaTypeHeaderValue contentType
             = new MediaTypeHeaderValue("application/"); 
-        public static async Task<T> HeadContentAs<T>(this HttpResponseMessage response)
+        public static async Task<T> ReadContentAs<T>(this HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
                 throw new ApplicationException($"Something went wrong calling the api" +

@@ -2,6 +2,8 @@ using AutoMapper;
 using GeekShopping.ProductAPI.Config;
 using GeekShopping.ProductAPI.Model.Context;
 using GeekShopping.ProductAPI.Repository;
+using GeekShopping.ProductAPI.Services;
+using GeekShopping.ProductAPI.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductAPI
@@ -25,6 +27,8 @@ namespace GeekShopping.ProductAPI
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
             builder.Services.AddControllers();
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
@@ -33,6 +37,10 @@ namespace GeekShopping.ProductAPI
             });
 
             var app = builder.Build();
+
+            builder.Services.AddHttpClient<IProductService, ProductService>(c =>
+                c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"])
+            );
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
